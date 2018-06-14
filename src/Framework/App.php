@@ -26,7 +26,7 @@ use Zend\Diactoros\Response\SapiEmitter;
      private $config;
      private $routeCollection;
 
-     public function __construct($config = null)
+     public function __construct($config)
      {
          parent::__construct();
          $this->config = $config;
@@ -39,8 +39,24 @@ use Zend\Diactoros\Response\SapiEmitter;
             );
         });
         $this->share('emitter', SapiEmitter::class);
+
+        $this-compileRoutes();
      }
 
+     public function compileRoutes()
+     {
+        foreach ($this->config['routes'] as $route) {
+            $tmp = explode("::", $route[2]);
+            $controller = $tmp[0]."Controller";
+            $action = $tmp[1]."Action";
+            $this->routeCollection->map($route[0], $route[1]);
+        }
+     }
 
+     public function dispatch()
+     {
+        $response = $this->routeCollection->dispatch($this->get('request'), $this->get('response'));
+        $this->get('emitter')->emit($response);
+     }
 
  }
