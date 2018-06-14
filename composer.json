@@ -5,7 +5,8 @@
     "require": {
         "php": ">=7.0",
         "league/container": "2.4",
-        "symfony/yaml": "4.1"
+        "symfony/yaml": "4.1",
+        "league/route": "3.0.x"
     },
     "license": "MIT",
     "authors": [
