@@ -17,13 +17,11 @@ namespace Quantum\Framework;
 
 use League\Container\Container;
 
-class App
+class App extends Container
 {
-    protected $container;
-
-    public function __construct(Container $container)
+    public function __construct()
     {
-        $this->container = $container;
+        parent::__construct();
     }
 
 }
