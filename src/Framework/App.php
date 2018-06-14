@@ -40,7 +40,7 @@ use Zend\Diactoros\Response\SapiEmitter;
         });
         $this->share('emitter', SapiEmitter::class);
 
-        $this-compileRoutes();
+        $this->compileRoutes();
      }
 
      public function compileRoutes()
