@@ -6,7 +6,8 @@
         "php": ">=7.0",
         "league/container": "2.4",
         "symfony/yaml": "4.1",
-        "league/route": "3.0.x"
+        "league/route": "3.0.x",
+        "zendframework/zend-diactoros": "1.7.2"
     },
     "license": "MIT",
     "authors": [
