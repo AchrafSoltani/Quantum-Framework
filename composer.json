@@ -1,0 +1,21 @@
+{
+    "name": "achrafsoltani/quantum-framework",
+    "description": "Just another PHP framework",
+    "type": "project",
+    "require": {
+        "php": ">=5.3.0",
+        "league/container": "*"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Achraf Soltani",
+            "email": "achraf.soltani@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    }
+}
