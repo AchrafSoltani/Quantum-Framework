@@ -50,8 +50,8 @@ use Zend\Diactoros\Response\SapiEmitter;
             $controller = $tmp[0]."Controller";
             $action = $tmp[1]."Action";
             $class = 'App\Controller\\'.$controller;
-            $obj = new $class();
-            $this->routeCollection->map($route[0], $route[1], $obj->$action($this->get('request'), $this->get('response')));
+            //$obj = new $class();
+            $this->routeCollection->map($route[0], $route[1], array(new $class(), $action));
         }
      }
 
