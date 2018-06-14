@@ -49,7 +49,9 @@ use Zend\Diactoros\Response\SapiEmitter;
             $tmp = explode("::", $route[2]);
             $controller = $tmp[0]."Controller";
             $action = $tmp[1]."Action";
-            $this->routeCollection->map($route[0], $route[1]);
+            $class = "App\Controller\".$controller;
+            $obj = new $class();
+            $this->routeCollection->map($route[0], $route[1], $obj->$action());
         }
      }
 
