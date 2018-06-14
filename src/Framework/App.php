@@ -16,12 +16,27 @@
 namespace Quantum\Framework;
 
 use League\Container\Container;
+use Psr\Http\Message\ResponseInterface;
+use Psr\Http\Message\ServerRequestInterface;
 
-class App extends Container
-{
-    public function __construct()
-    {
-        parent::__construct();
-    }
+ class App extends Container
+ {
+     private $config;
 
-}
+     public function __construct($config = null)
+     {
+         parent::__construct();
+         $this->config = $config;
+
+         $this->share('response', Zend\Diactoros\Response::class);
+         $this->share('request', function () {
+            return Zend\Diactoros\ServerRequestFactory::fromGlobals(
+                $_SERVER, $_GET, $_POST, $_COOKIE, $_FILES
+            );
+        });
+        $this->share('emitter', Zend\Diactoros\Response\SapiEmitter::class);
+     }
+
+
+
+ }
